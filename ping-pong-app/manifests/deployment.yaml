@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: log-output
+  name: app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: log-output
+      app: app
   template:
     metadata:
       labels:
-        app: log-output
+        app: app
     spec:
       containers:
-        - name: log-output
-          image: matibrax/log-output
+        - name: app
+          image: matibrax/app

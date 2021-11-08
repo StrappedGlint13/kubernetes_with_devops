@@ -2,9 +2,9 @@ FROM node:alpine
 
 WORKDIR /usr/src/app
 
-COPY . .
+COPY package* ./
 
-RUN npm install
+RUN npm ci
 
 COPY . .
 
