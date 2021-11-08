@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app
+  name: ppa
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: app
+      app: ppa
   template:
     metadata:
       labels:
-        app: app
+        app: ppa
     spec:
       containers:
-        - name: app
-          image: matibrax/app
+        - name: ppa
+          image: matibrax/ppa.01

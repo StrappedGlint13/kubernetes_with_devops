@@ -1,11 +1,11 @@
 FROM node:alpine
 
-EXPOSE 3001
-
 WORKDIR /usr/src/app
+
+COPY package* ./
+
+RUN npm ci
 
 COPY . .
 
-RUN npm install
-
-CMD npm start
+CMD ["npm", "start"]
