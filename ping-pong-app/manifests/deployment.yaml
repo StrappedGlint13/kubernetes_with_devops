@@ -12,6 +12,13 @@ spec:
       labels:
         app: ppa
     spec:
+      volumes: # Define volume
+        - name: shared-logs
+          persistentVolumeClaim:
+            claimName: requests-claim
       containers:
         - name: ppa
-          image: matibrax/ppa.01
+          image: matibrax/ppa:3
+          volumeMounts: # Mount volume
+          - name: shared-logs
+            mountPath: /usr/src/app/files

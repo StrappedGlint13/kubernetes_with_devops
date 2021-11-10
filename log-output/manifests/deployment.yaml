@@ -12,6 +12,18 @@ spec:
       labels:
         app: log-output
     spec:
+      volumes: # Define volume
+        - name: shared-logs
+          persistentVolumeClaim:
+            claimName: requests-claim
       containers:
-        - name: log-output
-          image: matibrax/log-output:1
+        - name: writer-ts
+          image: matibrax/writer-ts:3
+          volumeMounts: # Mount volume
+          - name: shared-logs
+            mountPath: /usr/src/app/files
+        - name: reader-ts
+          image: matibrax/reader-ts:1
+          volumeMounts: # Mount volume
+          - name: shared-logs
+            mountPath: /usr/src/app/files
