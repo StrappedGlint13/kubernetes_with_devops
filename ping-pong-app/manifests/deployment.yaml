@@ -18,7 +18,7 @@ spec:
             claimName: requests-claim
       containers:
         - name: ppa
-          image: matibrax/ppa:3
+          image: matibrax/ppa:4
           volumeMounts: # Mount volume
           - name: shared-logs
             mountPath: /usr/src/app/files

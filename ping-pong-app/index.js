@@ -10,7 +10,7 @@ const directory = path.join('/', 'usr', 'src', 'app', 'files')
 const filePath = path.join(directory, 'pings.txt')
 
 const write = ( counter ) => {
-  fs.writeFileSync(filePath, ('Ping / Pong: ', counter.toString()), (err) => {
+  fs.writeFileSync(filePath, counter.toString(), (err) => {
     if(err) {
         return console.log(err);
     }
