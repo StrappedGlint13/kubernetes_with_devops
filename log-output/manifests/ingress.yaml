@@ -20,3 +20,10 @@ spec:
             name: ppa
             port:
               number: 2345
+      - path: /a
+        pathType: Prefix
+        backend:
+          service:
+            name: ppa
+            port:
+              number: 2345

@@ -21,7 +21,6 @@ const findAFile = async () => {
 
   await new Promise(res => fs.mkdir(directory, (err) => res()))
   const response = await axios.get('https://picsum.photos/1200', { responseType: 'stream' })
-  console.log(response.data)
   response.data.pipe(fs.createWriteStream(filePath_image))
 }
 
