@@ -12,18 +12,25 @@ spec:
           service:
             name: log-output
             port:
-              number: 2345
+              number: 80
       - path: /pingpong
         pathType: Prefix
         backend:
           service:
-            name: ppa
+            name: ppa-service
             port:
-              number: 2345
+              number: 80
       - path: /api
         pathType: Prefix
         backend:
           service:
             name: todos
             port:
-              number: 2345
+              number: 80
+      - path: /a
+        pathType: Prefix
+        backend:
+          service:
+            name: ppa-service
+            port:
+              number: 80

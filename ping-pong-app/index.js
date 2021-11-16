@@ -1,18 +1,14 @@
-const fs = require('fs');
 const Koa = require('koa')
+const cors = require('@koa/cors');
 const app = new Koa()
 require('dotenv').config()
-
+app.use(cors());
 const Router = require('koa-router')
 const views = require('koa-views')
-const serve = require('koa-static')
 
 const router = new Router()
 
-const bodyparser = require('koa-bodyparser')
 
-app.use(serve('/usr/src/app/files'))
-app.use(bodyparser())
 app.use(views('./templates', { map: { html: 'nunjucks' }}))
 
 let counter = 0

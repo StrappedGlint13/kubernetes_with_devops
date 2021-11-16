@@ -13,5 +13,5 @@ spec:
         app: ppa
     spec:
       containers:
-        - name: ppa
-          image: matibrax/ppa:9
+        - name: ppa-service
+          image: matibrax/ppa:2.4

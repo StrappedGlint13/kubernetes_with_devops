@@ -21,6 +21,7 @@ const typeDefs = gql`
     ): Todo
   }
 `
+
 const resolvers = {
   Query: {
     allTodos: async () => todos,
@@ -33,7 +34,7 @@ const resolvers = {
       todos = todos.concat(todo)
       console.log(todos)
       return todo
-    }
+    },
   }
 }
 

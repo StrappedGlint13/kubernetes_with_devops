@@ -17,13 +17,15 @@ spec:
           persistentVolumeClaim:
             claimName: requests-claim
       containers:
+        - name: front
+          image: matibrax/front-beta:13
         - name: writer-ts
           image: matibrax/writer-ts:4
           volumeMounts: # Mount volume
           - name: shared-logs
             mountPath: /usr/src/app/files
         - name: reader-ts
-          image: matibrax/rts:2.1
+          image: matibrax/rts:2.2
           volumeMounts: # Mount volume
           - name: shared-logs
             mountPath: /usr/src/app/files
