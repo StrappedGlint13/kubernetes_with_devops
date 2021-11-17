@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todos-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todos-frontend
+  template:
+    metadata:
+      labels:
+        app: todos-frontend
+    spec:
+      containers:
+        - name: todos-frontend
+          image: matibrax/todos-frontend

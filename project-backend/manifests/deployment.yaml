@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todos-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todos-backend
+  template:
+    metadata:
+      labels:
+        app: todos-backend
+    spec:
+      containers:
+        - name: todos-backend
+          image: matibrax/todos-backend

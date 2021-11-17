@@ -4,7 +4,6 @@ const app = new Koa()
 require('dotenv').config()
 const path = require('path')
 
-const cors = require('@koa/cors');
 const Router = require('koa-router')
 const views = require('koa-views')
 const serve = require('koa-static')
@@ -14,7 +13,6 @@ const router = new Router()
 
 const bodyparser = require('koa-bodyparser')
 
-app.use(cors());
 app.use(serve('/usr/src/app/files'))
 app.use(bodyparser())
 app.use(views('./templates', { map: { html: 'nunjucks' }}))
@@ -23,6 +21,7 @@ const directory = path.join('/', 'usr', 'src', 'app', 'files')
 const filePath = path.join(directory, 'logs.txt')
 
 const PORT = process.env.PORT || 3000
+const PORT_PINGPONG = process.env.PORT_PINGPONG
 
 const getFile = async ( filePath ) => new Promise(res => {
   fs.readFile(filePath, (err, buffer) => {
@@ -31,11 +30,14 @@ const getFile = async ( filePath ) => new Promise(res => {
   })
 })
 
-
-router.get('/', async (ctx) => {
-  if (ctx.path.includes('favicon.ico')) return
-  ctx.body = await getFile(filePath)
-  ctx.set('Content-type', 'text/plain; charset=utf-8');
+router.get('/logs', async (ctx) => {
+  const response = await axios.get(`http://ppa-service:80/a`)
+  const counter  = response.data
+  console.log('pongs', counter)
+  return ctx.render('./index', {
+    logs: await getFile(filePath),
+    pings: counter,
+  })
 })
 
 app.use(router.routes())

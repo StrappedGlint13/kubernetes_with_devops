@@ -10,7 +10,14 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: log-output
+            name: todos-frontend
+            port:
+              number: 80
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: todos-backend
             port:
               number: 80
       - path: /pingpong
@@ -20,11 +27,11 @@ spec:
             name: ppa-service
             port:
               number: 80
-      - path: /api
+      - path: /logs
         pathType: Prefix
         backend:
           service:
-            name: todos
+            name: log-output
             port:
               number: 80
       - path: /a

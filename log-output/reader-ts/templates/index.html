@@ -7,15 +7,4 @@
     <p>{{ logs }}</p>
     <p> ping/pong: {{ pings }}</p>
   </body>
-  <img src="image.jpg" width="300" height="300">
-  <form method="POST" action="/">
-    <br>
-    <input type="text" name="todo" max="10">
-    <input type="submit" value="Submit">
-  </form> 
-  {% for todo in todos %}
-    <li>
-      {{ todo }}
-    </li>
-    {% endfor %}
 </html>
