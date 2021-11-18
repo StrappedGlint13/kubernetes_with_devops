@@ -21,7 +21,7 @@ const directory = path.join('/', 'usr', 'src', 'app', 'files')
 const filePath = path.join(directory, 'logs.txt')
 
 const PORT = process.env.PORT || 3000
-const PORT_PINGPONG = process.env.PORT_PINGPONG
+const MESSAGE = process.env.MESSAGE
 
 const getFile = async ( filePath ) => new Promise(res => {
   fs.readFile(filePath, (err, buffer) => {

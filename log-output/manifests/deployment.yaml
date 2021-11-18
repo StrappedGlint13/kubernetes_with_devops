@@ -13,18 +13,27 @@ spec:
       labels:
         app: log-output
     spec:
-      volumes: # Define volume
-        - name: shared-logs
-          persistentVolumeClaim:
-            claimName: requests-claim
       containers:
         - name: writer-ts
           image: matibrax/writer-ts:4
-          volumeMounts: # Mount volume
+          volumeMounts:
           - name: shared-logs
             mountPath: /usr/src/app/files
         - name: reader-ts
           image: matibrax/rts-front:3
-          volumeMounts: # Mount volume
+          volumeMounts: 
           - name: shared-logs
             mountPath: /usr/src/app/files
+          - name: cfgmap
+            mountPath: /usr/src/app/files/config.txt
+            #subPath: config.txt
+      volumes: 
+        - name: shared-logs
+          persistentVolumeClaim:
+            claimName: requests-claim
+        - name: cfgmap
+          configMap:
+            name: lc-1
+            #items:
+            #    - key: "dotenv.txt"
+            #      path: "config.txt"
