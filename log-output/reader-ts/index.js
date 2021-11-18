@@ -20,9 +20,9 @@ app.use(views('./templates', { map: { html: 'nunjucks' }}))
 const directory = path.join('/', 'usr', 'src', 'app', 'files')
 const filePath = path.join(directory, 'logs.txt')
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT
 const MESSAGE = process.env.MESSAGE
-
+console.log(MESSAGE)
 const getFile = async ( filePath ) => new Promise(res => {
   fs.readFile(filePath, (err, buffer) => {
     if (err) return console.log('FAILED TO READ FILE', '----------------', err)
@@ -35,6 +35,7 @@ router.get('/logs', async (ctx) => {
   const counter  = response.data
   console.log('pongs', counter)
   return ctx.render('./index', {
+    message: MESSAGE,
     logs: await getFile(filePath),
     pings: counter,
   })

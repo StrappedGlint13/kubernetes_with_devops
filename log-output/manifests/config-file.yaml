@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: lc-1
-data:
-  dotenv.txt: |
-    MESSAGE=hello

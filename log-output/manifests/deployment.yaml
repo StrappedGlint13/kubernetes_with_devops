@@ -1,7 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: logppa
   name: log-output
 spec:
   replicas: 1
@@ -10,6 +9,7 @@ spec:
       app: log-output
   template:
     metadata:
+      namespace: logppa
       labels:
         app: log-output
     spec:
@@ -20,20 +20,24 @@ spec:
           - name: shared-logs
             mountPath: /usr/src/app/files
         - name: reader-ts
-          image: matibrax/rts-front:3
+          image: matibrax/rts:2.63
           volumeMounts: 
           - name: shared-logs
             mountPath: /usr/src/app/files
-          - name: cfgmap
-            mountPath: /usr/src/app/files/config.txt
-            #subPath: config.txt
+          env:
+          - name: MESSAGE
+            valueFrom:
+              configMapKeyRef:
+                name: message-config
+                key: MESSAGE
+          - name: PORT
+            valueFrom:
+              configMapKeyRef:
+                name: port-config
+                key: PORT
       volumes: 
         - name: shared-logs
           persistentVolumeClaim:
             claimName: requests-claim
-        - name: cfgmap
-          configMap:
-            name: lc-1
-            #items:
-            #    - key: "dotenv.txt"
-            #      path: "config.txt"
+
+
