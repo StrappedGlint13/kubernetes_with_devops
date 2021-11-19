@@ -16,3 +16,9 @@ spec:
       containers:
         - name: ppa-service
           image: matibrax/ppa:2.4
+          env:
+            - name: API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: ppa-apikey
+                  key: API_KEY
