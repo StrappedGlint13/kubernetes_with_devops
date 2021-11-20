@@ -14,11 +14,11 @@ spec:
         app: ppa
     spec:
       containers:
-        - name: ppa-service
-          image: matibrax/ppa:2.4
+        - name: ppa
+          image: matibrax/ppa:2.77
           env:
-            - name: API_KEY
+            - name: POSTGRES_PASSWORD 
               valueFrom:
                 secretKeyRef:
                   name: ppa-apikey
-                  key: API_KEY
+                  key: POSTGRES_PASSWORD

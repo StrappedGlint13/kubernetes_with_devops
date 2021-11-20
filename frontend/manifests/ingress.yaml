@@ -1,30 +1,23 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  namespace: logppa
+  namespace: project
   name: app
 spec:
   rules:
   - http:
       paths:
-      - path: /pingpong
+      - path: /
         pathType: Prefix
         backend:
           service:
-            name: ppa
+            name: todos-frontend
             port:
               number: 80
-      - path: /logs
+      - path: /api
         pathType: Prefix
         backend:
           service:
-            name: log-output
-            port:
-              number: 80
-      - path: /a
-        pathType: Prefix
-        backend:
-          service:
-            name: ppa
+            name: todos-backend
             port:
               number: 80
