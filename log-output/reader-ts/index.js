@@ -31,7 +31,7 @@ const getFile = async ( filePath ) => new Promise(res => {
 })
 
 router.get('/logs', async (ctx) => {
-  const response = await axios.get(`http://ppa-service:80/a`)
+  const response = await axios.get(`http://ppa:80/a`)
   const counter  = response.data
   console.log('pongs', counter)
   return ctx.render('./index', {

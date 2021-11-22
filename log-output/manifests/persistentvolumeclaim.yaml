@@ -1,6 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
+  namespace: logppa
   name: requests-claim
 spec:
   storageClassName: manual

@@ -2,6 +2,7 @@ apiVersion: v1 # Includes the Service for lazyness
 kind: Service
 metadata:
   name: postgres-service
+  namespace: logppa
   labels:
     app: postgres
 spec:

@@ -1,11 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: project
   name: todos-backend
 spec:
   type: ClusterIP
   selector:
-    app: todos
+    app: todos-backend
   ports:
     - name: http
       port: 80

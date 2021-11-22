@@ -1,10 +1,18 @@
 const { ApolloServer, gql } = require('apollo-server')
 require('dotenv').config()
+const mongoose = require('mongoose')
 
-let todos = [
-  { name: 'TODO 1' }, 
-  { name: 'TODO 2' }
-]
+const Todo = require('./Todo')
+
+MONGODB_URI = process.env.API
+
+mongoose.connect(MONGODB_URI)
+  .then(() => {
+    console.log('connected to MongoDB')
+  })
+  .catch((error) => {
+    console.log('error connection to MongoDB:', error.message)
+  })
 
 const typeDefs = gql`
   type Todo {
@@ -24,16 +32,12 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    allTodos: async () => todos,
+    allTodos: async (root, args) => Todo.find({}),
   },
   Mutation: {
     addTodo: (root, args) => {
-      console.log(args)
-      const todo =  { ...args }
-      console.log(todo)
-      todos = todos.concat(todo)
-      console.log(todos)
-      return todo
+      const todo = new Todo({ ...args })
+      return todo.save()
     },
   }
 }

@@ -15,4 +15,10 @@ spec:
     spec:
       containers:
         - name: todos-backend
-          image: matibrax/todos-backend
+          image: matibrax/pb:2.82
+          env:
+          - name: API
+            valueFrom:
+              configMapKeyRef:
+                name: mongodb-config
+                key: API
