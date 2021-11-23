@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  namespace: project
+  name: mycron-container
+spec:
+    schedule: "0 0 * * *"
+    jobTemplate:
+      spec:
+        template:
+          spec:
+            containers:
+            - name: mycron-container
+              image: matibrax/randomwikis
+              imagePullPolicy: IfNotPresent
+            restartPolicy: OnFailure

@@ -17,6 +17,7 @@
     "apollo-server": "^2.25.2",
     "apollo-server-express": "^2.25.2",
     "dotenv": "^10.0.0",
+    "fetch": "^1.1.0",
     "graphql": "^15.5.0",
     "mongoose": "^6.0.13",
     "mongoose-unique-validator": "^3.0.0"
