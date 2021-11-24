@@ -11,6 +11,6 @@ spec:
           spec:
             containers:
             - name: mycron-container
-              image: matibrax/randomwikis
+              image: matibrax/todoshell:1
               imagePullPolicy: IfNotPresent
             restartPolicy: OnFailure

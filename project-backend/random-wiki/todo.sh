@@ -4,7 +4,7 @@ content=$(curl -L https://en.wikipedia.org/wiki/Special:Random | sed -n 's/.*hre
 
 echo $content
 
-curl 'http://localhost:8081/api' \
+curl 'http://todos-backend:80/api' \
   -X POST \
   -H 'content-type: application/json' \
   --data '{
