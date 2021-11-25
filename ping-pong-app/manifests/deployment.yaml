@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: ppa
-          image: matibrax/ppa:2.77
+          image: matibrax/ppa:3.2
           env:
             - name: POSTGRES_PASSWORD 
               valueFrom:

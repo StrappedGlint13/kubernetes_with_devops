@@ -20,7 +20,7 @@ app.use(views('./templates', { map: { html: 'nunjucks' }}))
 const directory = path.join('/', 'usr', 'src', 'app', 'files')
 const filePath = path.join(directory, 'logs.txt')
 
-const PORT = process.env.PORT
+const PORT = 3001
 const MESSAGE = process.env.MESSAGE
 console.log(MESSAGE)
 const getFile = async ( filePath ) => new Promise(res => {
@@ -42,6 +42,10 @@ router.get('/logs', async (ctx) => {
 })
 
 app.use(router.routes())
+
+router.get('/', async (ctx) => {
+  ctx.status = 200
+})
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)

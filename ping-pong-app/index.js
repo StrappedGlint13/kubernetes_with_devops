@@ -43,6 +43,10 @@ router.get('/pingpong', async (ctx) => {
 
 })
 
+router.get('/', async (ctx) => {
+  ctx.status = 200
+})
+
 router.get('/a', async (ctx) => {
   ctx.body = counter
 })

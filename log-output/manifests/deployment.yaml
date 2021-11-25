@@ -20,7 +20,7 @@ spec:
           - name: shared-logs
             mountPath: /usr/src/app/files
         - name: reader-ts
-          image: matibrax/2.81
+          image: matibrax/rts:3.22
           volumeMounts: 
           - name: shared-logs
             mountPath: /usr/src/app/files
