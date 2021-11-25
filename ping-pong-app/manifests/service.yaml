@@ -4,7 +4,7 @@ metadata:
   name: ppa
   namespace: logppa
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: ppa
   ports:
