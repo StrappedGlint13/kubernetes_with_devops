@@ -23,14 +23,13 @@ spec:
         ports:
           - containerPort: 5432
         volumeMounts:
-        - name: postgres-database-storage
+        - name: requests-claim
           mountPath: /var/lib/pgsql/data
   volumeClaimTemplates:
     - metadata:
-        name: postgres-database-storage
+        name: requests-claim
       spec:
-        accessModes: ["ReadWriteOnce"]
-        storageClassName: local-path
+        accessModes: [ "ReadWriteOnce" ]
         resources:
           requests:
             storage: 100Mi

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: logppa
+  name: ppa
+spec:
+  type: LoadBalancer 
+  selector:
+    app: ppa
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 3005
