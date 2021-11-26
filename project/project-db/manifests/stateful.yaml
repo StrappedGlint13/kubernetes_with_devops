@@ -29,14 +29,13 @@ spec:
           ports:
             - containerPort: 27017
           volumeMounts:
-            - name: data
+            - name: requests-claim
               mountPath: /data/db
   volumeClaimTemplates:
     - metadata:
-        name: data
+        name: requests-claim
       spec:
         accessModes: ["ReadWriteOnce"]
-        storageClassName: local-path
         resources:
           requests:
             storage: 50Mi

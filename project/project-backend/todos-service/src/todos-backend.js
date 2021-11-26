@@ -1,4 +1,5 @@
-const { ApolloServer, gql, UserInputError } = require('apollo-server')
+const express = require('express')
+const { ApolloServer, gql } = require('apollo-server-express')
 require('dotenv').config()
 const mongoose = require('mongoose')
 
@@ -53,6 +54,14 @@ const server = new ApolloServer({
   resolvers,
 })
 
-server.listen().then(({ url }) => {
-  console.log(`Server ready at ${url}`)
+const app = express()
+server.applyMiddleware({ app })
+
+app.get('/', async (req,res) => {
+  console.log('for health check')
+  res.status(200).end()
 })
+
+app.listen({ port: 4000 }, () => 
+console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+)

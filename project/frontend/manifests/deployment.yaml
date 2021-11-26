@@ -15,4 +15,4 @@ spec:
     spec:
       containers:
         - name: todos-frontend
-          image: matibrax/todos-frontend
+          image: PROJECT/IMAGE

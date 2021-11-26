@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: todos-backend
-          image: matibrax/pb:2.101
+          image: matibrax/pb:3.31
           env:
           - name: API
             valueFrom:

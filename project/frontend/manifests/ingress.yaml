@@ -14,7 +14,7 @@ spec:
             name: todos-frontend
             port:
               number: 80
-      - path: /api
+      - path: /graphql
         pathType: Prefix
         backend:
           service:

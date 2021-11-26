@@ -4,7 +4,7 @@ metadata:
   namespace: project
   name: todos-frontend
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: todos-frontend
   ports:
