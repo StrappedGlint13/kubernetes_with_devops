@@ -7,7 +7,7 @@ env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: dwk-cluster
   GKE_ZONE: europe-north1-b
-  IMAGE: matibrax/todos-f:3.35
+  IMAGE: todos-frontend
 
 jobs:
   build-publish-deploy:
@@ -37,7 +37,7 @@ jobs:
       uses: imranismail/setup-kustomize@v1
     - name: Deploy
       run: |-
-        kustomize edit set image matibrax/todos-f:3.35=gcr.io/$PROJECT_ID/$IMAGE:${GITHUB_REF#refs/heads/}-$GITHUB_SHA
+        kustomize edit set image gcr.io/PROJECT_ID/IMAGE=gcr.io/$PROJECT_ID/$IMAGE:${GITHUB_REF#refs/heads/}-$GITHUB_SHA
         kustomize build . | kubectl apply -f -
         kubectl rollout status deployment $IMAGE
         kubectl get services -o wide
